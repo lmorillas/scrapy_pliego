@@ -19,7 +19,7 @@ class PliegoSpider(scrapy.Spider):
 
         item = PliegoItem()
         item['url'] = response.url
-        item['lote'] = response.xpath('//div[@id="table_bids"]//h1/text()').extract()
+        item['lotehead'] = response.xpath('//div[@id="table_bids"]//h1/text()').extract()
         item['img_url'] = response.xpath('//img[@class="list_logo"]/@src').extract()
         item['img_desc'] = response.xpath('//img[@class="list_logo"]/@alt').extract()
 
@@ -30,5 +30,12 @@ class PliegoSpider(scrapy.Spider):
         item['lote'] = _desc[0]
         item['apartado'] = _desc[1]
         item['descripcion'] = _desc[2]
+
+        precio = response.xpath('//td[strong/text()[contains(., "Price")]]/text()').extract()
+        if precio:
+            precio = precio[-1].strip()
+        item['precio'] = precio
+
+
 
         yield item

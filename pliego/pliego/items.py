@@ -17,6 +17,7 @@ class PliegoItem(scrapy.Item):
     lote = scrapy.Field()
     apartado = scrapy.Field()
     descripcion = scrapy.Field()
+    precio = scrapy.Field()
 
 
 
