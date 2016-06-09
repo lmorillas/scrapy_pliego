@@ -10,7 +10,7 @@ import scrapy
 
 class PliegoItem(scrapy.Item):
     # Fields Pliego Items
-    lote = scrapy.Field()
+    lotehead = scrapy.Field()
     url = scrapy.Field()
     img_url = scrapy.Field()
     img_desc = scrapy.Field()
