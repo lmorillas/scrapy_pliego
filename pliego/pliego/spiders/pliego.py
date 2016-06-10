@@ -36,6 +36,8 @@ class PliegoSpider(scrapy.Spider):
             precio = precio[-1].strip()
         item['precio'] = precio
 
+        item['numerolote'] = response.xpath('//td[@class="lot_list_td"]/@id').extract()[0].split('-')[-1]
+
 
 
         yield item
